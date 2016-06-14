@@ -1,0 +1,11 @@
+.container{"data-ng-app"=>"app", 
+           "data-ng-controller"=>"AppController as vm"}
+  .board
+    %ul.inner_board{"data-ng-init"=>"vm.init()"} 
+      %li.rows{"data-ng-repeat"=>"row in vm.cells track by $index"}
+        .cell{"data-ng-repeat"=>"cell in row track by $index",
+              "data-ng-click"=>"vm.chooseType($parent.$index, $index)",
+              "ng-right-click"=>"vm.rotate($parent.$index, $index)"}
+          .item{"data-ng-model"=>"cell.type", "data-ng-class"=>"cell.type + '-item' + ' pos-' + cell.pos"} 
+            .beam{"data-ng-repeat"=>"beam in cell.beams track by $index",
+                  "data-ng-class"=>"cell.beams[$index]?cell.beams[$index].type + '-beam' + ' pos-' + cell.beams[$index].pos : ''"}

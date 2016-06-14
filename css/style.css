@@ -1,0 +1,260 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 0;
+  background: #294A67;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.container .board {
+  font-size: 20px;
+  font-family: Calibri, Verdana;
+  color: black;
+  width: calc(100% / 5);
+  height: 500px;
+  width: 500px;
+  background: gray;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 50px;
+  padding: 30px;
+}
+.container .board .inner_board {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: lightgray;
+  padding: 10px;
+}
+.container .board .inner_board .cell {
+  -webkit-transition: all ease-in-out 0.1s;
+  transition: all ease-in-out 0.1s;
+  min-width: 80px;
+  min-height: 80px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: top;
+  margin: 5px;
+  border-radius: 20px;
+  border: solid 5px gray;
+}
+.container .board .inner_board .cell:hover, .container .board .inner_board .cell:focus {
+  cursor: pointer;
+  box-shadow: 3px 3px 1px #333;
+}
+.container .board .inner_board .cell .item {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.container .board .inner_board .cell .item.pos-down:after {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.container .board .inner_board .cell .item.pos-left:after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.container .board .inner_board .cell .item.pos-up:after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.container .board .inner_board .cell .item.pos-right:after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.container .board .inner_board .cell .item.start-item {
+  background: red;
+}
+.container .board .inner_board .cell .item.start-item:before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff3333;
+  border: solid 3px #676767;
+  z-index: 1;
+}
+.container .board .inner_board .cell .item.start-item:after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 32px;
+  width: 10px;
+  height: 30px;
+  background: #ff3333;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  border: solid 3px #676767;
+  z-index: 0;
+}
+.container .board .inner_board .cell .item.mirror-1-item {
+  background: #ff4dff;
+}
+.container .board .inner_board .cell .item.mirror-1-item:before, .container .board .inner_board .cell .item.mirror-1-item:after {
+  z-index: 1;
+}
+.container .board .inner_board .cell .item.mirror-1-item:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 72px 72px 0;
+  border-color: transparent purple transparent transparent;
+}
+.container .board .inner_board .cell .item.mirror-1-item:after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 39px;
+  width: 4px;
+  height: 100px;
+  background: #AADDF8;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.container .board .inner_board .cell .item.mirror-1-item.pos-down {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.container .board .inner_board .cell .item.mirror-1-item.pos-left {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.container .board .inner_board .cell .item.mirror-1-item.pos-up {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.container .board .inner_board .cell .item.mirror-1-item.pos-right {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.container .board .inner_board .cell .item .beam {
+  min-width: 80px;
+  min-height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container .board .inner_board .cell .item .beam:before, .container .board .inner_board .cell .item .beam:after {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  position: absolute;
+  width: 10px;
+  height: 100px;
+  background: -webkit-linear-gradient(right, white, #ff3333, white);
+  background: linear-gradient(to left, white, #ff3333, white);
+  border-left: solid 3px white;
+  border-right: solid 3px white;
+}
+.container .board .inner_board .cell .item .beam.pos-down {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.container .board .inner_board .cell .item .beam.pos-left {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.container .board .inner_board .cell .item .beam.pos-up {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.container .board .inner_board .cell .item .beam.pos-right {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.container .board .inner_board .cell .item .beam.default-beam:after {
+  content: "";
+  top: -10px;
+  left: 32px;
+}
+.container .board .inner_board .cell .item .beam.start-beam:after, .container .board .inner_board .cell .item .beam.end-beam:after {
+  content: "";
+  top: 40px;
+  left: 32px;
+  height: 55px;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  z-index: 0;
+}
+.container .board .inner_board .cell .item .beam.end-beam:after {
+  top: 50px;
+}
+.container .board .inner_board .cell .item .beam.angle-beam {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.container .board .inner_board .cell .item .beam.angle-beam:before, .container .board .inner_board .cell .item .beam.angle-beam:after {
+  content: "";
+  top: -50px;
+  left: 32px;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.container .board .inner_board .cell .item .beam.angle-beam:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.container .board .inner_board .cell .item .beam.angle-beam:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}

@@ -1,0 +1,192 @@
+html, body
+  width: 100%
+  height: 100%
+
+body
+  margin: 0
+  font-size: 0
+  background: #294A67
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  
+.container  
+  .board
+    font-size: 20px
+    font-family: Calibri, Verdana
+    color: black
+    width: calc(100% / 5)
+    height: 500px
+    width: 500px
+    background: gray
+    display: inline-flex
+    vertical-align: middle
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    border-radius: 50px
+    padding: 30px
+    
+    .inner_board
+      width: 100%
+      height: 100%
+      border-radius: 20px
+      background: lightgray
+      padding: 10px
+      
+      .cell
+        transition: all ease-in-out .1s
+        min-width: 80px
+        min-height: 80px
+        display: inline-flex
+        vertical-align: top
+        margin: 5px
+        border-radius: 20px
+        border: solid 5px gray
+        
+        &:hover, &:focus
+          cursor: pointer
+          box-shadow: 3px 3px 1px #333    
+            
+        .item
+          width: 80px
+          height: 80px
+          border-radius: 15px
+          display: flex
+          align-items: center
+          justify-content: center
+          position: relative
+          
+          &.pos-down:after
+            transform: rotate(0deg)
+          &.pos-left:after
+            transform: rotate(90deg)
+          &.pos-up:after
+            transform: rotate(180deg)
+          &.pos-right:after
+            transform: rotate(-90deg)
+            
+          &.start-item
+            background: red
+            
+            &:before
+              content: ''
+              width: 40px
+              height: 40px
+              border-radius: 50%
+              background: lighten(red, 10%)
+              border: solid 3px darken(gray, 10%)
+              z-index: 1
+
+            &:after
+              content: ''
+              position: absolute
+              top: 40px
+              left: 32px
+              width: 10px
+              height: 30px
+              background: lighten(red, 10%)
+              transform-origin: top center
+              border: solid 3px darken(gray, 10%)
+              z-index: 0
+            
+          &.mirror-1-item
+            background: lighten(purple, 40%)
+            
+            &:before, &:after
+              z-index: 1
+            
+            &:before
+              content: ''
+              width: 0
+              height: 0
+              border-style: solid
+              border-width: 0 72px 72px 0
+              border-color: transparent purple transparent transparent
+
+            &:after
+              content: ''
+              position: absolute
+              top: -11px
+              left: 39px
+              width: 4px
+              height: 100px
+              background: #AADDF8
+              transform-origin: center
+              transform: rotate(-45deg)
+              border-top-right-radius: 30px
+              border-bottom-right-radius: 30px
+            
+            &.pos-down
+              transform: rotate(0deg)
+            &.pos-left
+              transform: rotate(90deg)
+            &.pos-up
+              transform: rotate(180deg)
+            &.pos-right
+              transform: rotate(-90deg)
+            
+          .beam
+            min-width: 80px
+            min-height: 80px
+            position: absolute
+            top: 0
+            left: 0
+            
+            &:before, &:after
+              transform-origin: center center
+              position: absolute
+              width: 10px
+              height: 100px
+              background: linear-gradient(to left, white, lighten(red, 10%), white)
+              border-left: solid 3px white
+              border-right: solid 3px white
+            
+            &.pos-down
+              transform: rotate(0deg)
+            &.pos-left
+              transform: rotate(90deg)
+            &.pos-up
+              transform: rotate(180deg)
+            &.pos-right
+              transform: rotate(-90deg)
+            
+            &.default-beam
+              &:after
+                content: ''  
+                top: -10px
+                left: 32px
+           
+            &.start-beam, &.end-beam              
+              &:after
+                content: ''
+                top: 40px
+                left: 32px
+                height: 55px
+                transform-origin: top center 
+                z-index: 0
+
+            &.end-beam:after
+              top: 50px
+              
+            &.angle-beam
+              width: 100%
+              height: 50px
+              overflow: hidden
+              position: absolute
+              top: 40px
+              left: 0
+              transform-origin: top center
+              transform: rotate(45deg)
+              
+              &:before, &:after
+                content: ''  
+                top: -50px
+                left: 32px
+                transform-origin: center center
+              
+              &:before
+                transform: rotate(45deg)
+              &:after
+                transform: rotate(-45deg)

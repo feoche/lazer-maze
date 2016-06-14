@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Laser Maze</title>
+    
+    
+    <link rel="stylesheet" href="css/reset.css">
+
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class='container' data-ng-app='app' data-ng-controller='AppController as vm'>
+  <div class='board'>
+    <ul class='inner_board' data-ng-init='vm.init()'>
+      <li class='rows' data-ng-repeat='row in vm.cells track by $index'>
+        <div class='cell' data-ng-click='vm.chooseType($parent.$index, $index)' data-ng-repeat='cell in row track by $index' ng-right-click='vm.rotate($parent.$index, $index)'>
+          <div class='item' data-ng-class="cell.type + '-item' + ' pos-' + cell.pos" data-ng-model='cell.type'>
+            <div class='beam' data-ng-class="cell.beams[$index]?cell.beams[$index].type + '-beam' + ' pos-' + cell.beams[$index].pos : ''" data-ng-repeat='beam in cell.beams track by $index'></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
